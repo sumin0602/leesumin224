@@ -1,24 +1,19 @@
 import streamlit as st
-from PIL import Image
+import pandas as pd
+import matplotlib.pyplot as plt
+from PIL import Image, ImageOps
 import io
+from rembg import remove
 
-# 갤럭시 S24 해상도 설정
-GALAXY_S24_WIDTH = 1080
-GALAXY_S24_HEIGHT = 2340
+# CSV 파일 불러오기
+@st.cache_data
+def load_data():
+    file_path = "age2411.csv"
+    df = pd.read_csv(file_path)
+    return df
 
-# 타이틀
-st.title("📱✨ 갤럭시 S24 화면 크기 이미지 리사이저")
+df = load_data()
 
-# 파일 업로드
-uploaded_file = st.file_uploader("📤 이미지를 업로드하세요!", type=["jpg", "jpeg", "png"])
-
-if uploaded_file is not None:
-    # 이미지 열기
-    image = Image.open(uploaded_file)
-    
-    # 원본 이미지 표시
-    st.subheader("🖼️ 원본 이미지")
-    st.image(image, caption="업로드한 이미지", use_column_width=True)
-    
-    # 이미지 리사이즈
-    res
+# 지역 목록 추출
+df["\ud589\uc815\uad6c\uc5ed"] = df["\ud589\uc815\uad6c\uc5ed"].str.split(" ").str[-1]  # \ud589\uc815\uad6c\uc5ed\uc5d0\uc11c \ub9c8\uc9c0\ub9c8 \ub2e4\ub974\uac8c \uacb0\ud569
+octlmar doc update completion
