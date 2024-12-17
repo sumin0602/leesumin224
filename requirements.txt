@@ -4,6 +4,3 @@ python-pptx
 pillow
 poppler-utils
 koreanize-matplotlib
-rembg
-onnxruntime
-onnxruntime==1.14.1
