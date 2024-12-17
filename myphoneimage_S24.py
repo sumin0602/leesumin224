@@ -19,7 +19,7 @@ if uploaded_file is not None:
     resized_image = image.resize(galaxy_s24_resolution, Image.Resampling.LANCZOS)
     
     # 리사이즈된 이미지 보여주기
-    st.image(resized_image, caption="📏 리사이즈된 이미지 👀", use_column_width=True)
+    st.image(resized_image, caption="📏 리사이즈된 이미지 👀", use_container_width=True)
     
     # 리사이즈된 이미지 저장
     save_button = st.button("💾 리사이즈된 이미지 다운로드")
@@ -32,4 +32,3 @@ if uploaded_file is not None:
         # 다운로드 링크 제공
         st.download_button("📥 다운로드", save_path, file_name="galaxy_s24_resized_image.png", mime="image/png")
         st.write("👉 다운로드가 완료되었습니다! 즐기세요! 🎉")
-
