@@ -1,0 +1,29 @@
+import streamlit as st
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# CSV 파일 불러오기
+@st.cache_data
+def load_data():
+    file_path = "age2411.csv"
+    df = pd.read_csv(file_path)
+    return df
+
+df = load_data()
+
+# 지역 목록 추출
+df["행정구역"] = df["행정구역"].str.split(" ").str[-1]  # 행정구역에서 마지막 단어만 추출
+regions = df["행정구역"].unique()
+
+# 스트림릿 UI 설정
+st.title("🌏📊 지역별 인구 구조 시각화")
+
+# 지역 선택
+selected_region = st.selectbox("📍 원하는 지역을 선택하세요:", regions)
+
+# 선택한 지역 데이터 필터링
+selected_data = df[df["행정구역"] == selected_region]
+
+if not selected_data.empty:
+    # 연령별 인구 데이터 추출
+    age_columns = [col for col in df.columns if "2024" in col and "계" in col and "날" not in col and col not in ["2024\ub14411\uc6d4_\uacc4_\ucc28\uc6d0";
