@@ -15,8 +15,8 @@ if uploaded_file is not None:
     # 업로드된 파일 열기
     image = Image.open(uploaded_file)
     
-    # 리사이즈
-    resized_image = image.resize(galaxy_s24_resolution, Image.ANTIALIAS)
+    # 리사이즈 (Pillow 최신 버전에서는 Image.Resampling.LANCZOS 사용)
+    resized_image = image.resize(galaxy_s24_resolution, Image.Resampling.LANCZOS)
     
     # 리사이즈된 이미지 보여주기
     st.image(resized_image, caption="📏 리사이즈된 이미지 👀", use_column_width=True)
@@ -32,5 +32,4 @@ if uploaded_file is not None:
         # 다운로드 링크 제공
         st.download_button("📥 다운로드", save_path, file_name="galaxy_s24_resized_image.png", mime="image/png")
         st.write("👉 다운로드가 완료되었습니다! 즐기세요! 🎉")
-
 
