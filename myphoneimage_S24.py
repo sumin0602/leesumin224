@@ -39,4 +39,8 @@ if uploaded_file is not None:
     if save_button:
         # 리사이즈된 이미지를 저장할 경로 지정
         save_path = "/mnt/data/galaxy_s24_resized_image.png"
-        resized_image.
+        resized_image.save(save_path)
+        
+        # 다운로드 링크 제공
+        st.download_button("📥 다운로드", save_path, file_name="galaxy_s24_resized_image.png", mime="image/png")
+        st.write("👉 다운로드가 완료되었습니다! 즐기세요! 🎉")
